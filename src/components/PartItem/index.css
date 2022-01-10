@@ -1,0 +1,42 @@
+.wrapper {
+  width: 99%;
+  height: 100px;
+  position: relative;
+  margin-top: 32px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  /* align-items: flex-start; */
+  justify-content: space-between;
+}
+
+.img {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 81.94px;
+  height: 100px;
+  background: #E2E8F0;
+}
+
+.operations {
+  display: flex;
+  flex-direction: row;
+  /* width: 150px; */
+}
+
+.operations .container {
+  margin-bottom: 0px;
+  width: 80px;
+}
+
+.operations input {
+  max-width: 70px;
+}
+
+.operations span {
+  margin-top: 10px;
+  margin-left: 5px
+}

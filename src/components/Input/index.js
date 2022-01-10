@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React  from "react";
 import PropTypes from "prop-types";
 import "./index.css";
+import SearchIcon from '../../svg/SearchIcon'
 
 const Input = (props) => {
-  const { label, type, placeholder, ...args } = props;
+  const { label, type, placeholder, isSearch, ...args } = props;
   
   return (
     <div className='container'>
@@ -13,6 +14,7 @@ const Input = (props) => {
         className={"input"}
         {...args}
       />
+      {isSearch && <SearchIcon /> }
     </div>
   );
 };

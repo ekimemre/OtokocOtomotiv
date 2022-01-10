@@ -1,0 +1,22 @@
+.profile {
+  width: 160px;
+  margin: 30px 25px 20px 45px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.username {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 48px;
+}
+
+.logo {
+  position: absolute;
+  width: 165px;
+  height: 33px;
+  top: 35px;
+  right: 40px;
+}

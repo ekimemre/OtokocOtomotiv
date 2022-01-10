@@ -23,8 +23,8 @@
   position: absolute;
   width: 165px;
   height: 33px;
-  top: 50px;
-  right: 50px;
+  top: 40px;
+  right: 40px;
 }
 
 .title {
@@ -40,17 +40,18 @@
   height: 30%;
   margin-top: 35%;
   margin-left: 90px;
-  margin-right: 177px;;
+  margin-right: 25%;;
   margin-bottom: 25%;
 }
 
 .error {
+  display: flex;
   position: relative;
   margin-left: 55%;
+  margin-right: 5%;
+  background: #F8FAFC
 }
 
 .close {
-  position: absolute;
-  right: 61px;
-  bottom: 62px;
+  cursor: pointer;
 }

@@ -48,11 +48,11 @@ const Login = () => {
                 
                 <p className={styles.error}>
                     <ErrorBox />
+                    <p className={styles.close}><CloseIcon /></p>
+                    
                 </p>
 
-                <p className={styles.close}>
-                    <CloseIcon />
-                </p>
+                
                     
             </div>
             
