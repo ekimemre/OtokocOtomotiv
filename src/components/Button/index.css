@@ -1,0 +1,25 @@
+.button {
+  display: flex;
+  justify-content: end;
+  margin-top: 45px;
+}
+
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  width: 139px;
+  height: 48px;
+  border: 1px solid #0F172A;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 2px;
+  cursor: pointer;
+}
