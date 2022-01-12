@@ -4,8 +4,6 @@ import Input from '../../components/Input'
 import styles from './styles.module.css'
 import PartItem from '../../components/PartItem';
 import ItemContext from '../../context/ItemContext';
-import { selectOptions } from '@testing-library/user-event/dist/select-options';
-
 
 const items = ([
   {itemNo:"10009436", brand:"Volkswagen", model:"Golf", itemName: "Balata", itemCost: "110,06"},
@@ -70,13 +68,6 @@ const Store = () => {
             </div>
           )
         })}
-
-        {/* <PartItem partId="10009437" partName="Klima" partCost={"250.0"}/>
-        <PartItem partId="10009437" partName="Klima" partCost={"250.0"}/>
-        <PartItem partId="10009437" partName="Klima" partCost={"250.0"}/>
-        <PartItem partId="10009437" partName="Klima" partCost={"250.0"}/>
-        <PartItem partId="10009437" partName="Klima" partCost={"250.0"}/>
-        <PartItem partId="10009437" partName="Klima" partCost={"250.0"}/> */}
 
       </div>
     </div>
