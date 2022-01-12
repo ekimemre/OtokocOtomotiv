@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import ItemContext from '../../context/ItemContext'
 import LeftIcon from '../../svg/DuoLeftIcon'
 import styles from './styles.module.css'
 
@@ -6,6 +7,7 @@ const basketItems = [{id:"12345632", count:"3", cost:"110,03"},{id:"12345632", c
 
 const Sidebar = (props) => {
 
+  const { option } = useContext(ItemContext)
   const { zoomIn } = props;
 
   return (
@@ -25,6 +27,8 @@ const Sidebar = (props) => {
       </ul>
       
       <hr style={{border: "1px solid #000000",width:"98%"}}/>
+
+      <div>{JSON.stringify(option)}</div>
       
     </div>
   )

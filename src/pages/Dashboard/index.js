@@ -6,11 +6,10 @@ import Store from '../../components/Store'
 import ExtendedBar from '../../components/ExtendedBar';
 import TransparentBox from '../../components/TransparentBox';
 
-
 const Dashboard = () => {
 
   const [isExtend, setIsExtend] = useState(false);
-
+ 
   return (
     <div>
       <Navbar />
