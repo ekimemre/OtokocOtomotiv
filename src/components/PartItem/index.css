@@ -11,6 +11,18 @@
   justify-content: space-between;
 }
 
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 16px;
+  position: static;
+  width: 23%;
+  height: 40px;
+  left: 0px;
+  top: 0px;
+}
+
 .img {
   display: grid;
   justify-content: center;

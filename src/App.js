@@ -8,6 +8,7 @@ import './App.css';
 
 function App() {
 
+  // Dashboard öncesi kontrol sağlanabilmesi için kullanıcının girdiği email ve password değerleri Login sayfasında alınıyor ve ProtectedRoute'a yollanıyor.
   const [form, setForm] = useState({userName:"" , password:""})
 
   return (

@@ -11,21 +11,20 @@ import Button from '../../components/Button'
 
 const Login = ( props ) => {
 
-  const { form, setForm } = props;
-
   const navigate = useNavigate()
+  const { form, setForm } = props; //App.jsden gelen state değişkenleri.
   const [isInputsValid, setInputsValid] = useState(true)
 
-  const handleChange = (event) => {
-    setForm({...form, [event.target.name]: event.target.value})
+  const handleChange = (event) => { 
+    setForm({...form, [event.target.name]: event.target.value}) //form içinde iki farklı değer saklandığı için hangi değerin değiştirilmesi gerektiğini target ile belirliyoruz.
   }
 
   const inputCheck = () => {
-    if(form.userName === '' || form.password === ''){
-      setInputsValid(false);
-    }else{
-      navigate("/dashboard")
+
+    if(form.userName !== '' && form.password !== ''){
+      navigate("/dashboard")      
     }
+    setInputsValid(false); //Sadece inputlar boş olduğunda çalışır. Giriş yapılamadığında görünmez. TODO
   }
 
   const closeErrorBox = () => {
@@ -43,9 +42,7 @@ const Login = ( props ) => {
         <img className={styles.logo} src={Logo} alt="Otokoc-Otomotiv" />
 
         <div className={styles.inputs}>
-          <h1 className={styles.title}>
-              Giriş
-          </h1>
+          <h1 className={styles.title}>Giriş</h1>
           <Input
               label={"Email"}
               type={"text"}
@@ -62,18 +59,10 @@ const Login = ( props ) => {
               value={form.password}
               onChange={handleChange}
           />
-
           <div onClick={inputCheck}>
             <Button text="Giriş Yap " />
           </div>
-
-          {/* <Link to='/dashboard' style={{textDecoration: "none"}} onClick={inputCheck}>
-            <Button text="Giriş Yap " />
-          </Link> */}
-          
         </div>
-        
-        <div>{JSON.stringify(form)}</div>
 
         <p className={styles.error}>
           {!isInputsValid && <ErrorBox />}

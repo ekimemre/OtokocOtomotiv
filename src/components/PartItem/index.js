@@ -23,9 +23,9 @@ const PartItem = ( props ) => {
   return (
     <div className='wrapper'>
       <p className='img'> <ImageIcon /> </p>
-      <p>{partId}</p>
-      <p>{partName}</p>
-      <p>{partCost}</p>
+      <p className='item'>{partId}</p>
+      <p className='item'>{partName}</p>
+      <p className='item'>{partCost}</p>
 
       <p className='operations'>
         <Input 
@@ -37,10 +37,10 @@ const PartItem = ( props ) => {
         onChange={handleChange}
         />
         <span style={{cursor:"pointer"}} onClick={()=> handleClick(partId, partCost)}><AddIcon /></span>
-      </p>
-      
+      </p> 
     </div>
   )
 }
 
 export default PartItem
+

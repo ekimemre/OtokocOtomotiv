@@ -25,6 +25,7 @@
   padding-left: 10px;
   border: none;
   outline: none;
+  width: 99%;
 }
 
 .input:focus {

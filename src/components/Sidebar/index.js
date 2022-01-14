@@ -3,8 +3,6 @@ import ItemContext from '../../context/ItemContext'
 import LeftIcon from '../../svg/DuoLeftIcon'
 import styles from './styles.module.css'
 
-// const basketItems = [{id:"12345632", count:"3", cost:"110,03"},{id:"12345632", count:"3", cost:"110,03"},{id:"12345632", count:"3", cost:"110,03"}]
-
 const Sidebar = (props) => {
 
   const { basketItems } = useContext(ItemContext)
@@ -27,7 +25,6 @@ const Sidebar = (props) => {
       </ul>
       
       <hr style={{border: "1px solid #000000",width:"98%"}}/>
-      
     </div>
   )
 }

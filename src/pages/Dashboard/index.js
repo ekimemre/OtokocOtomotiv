@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from './styles.module.css'
+import Styles from './styles.module.css'
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import Store from '../../components/Store'
@@ -8,7 +8,7 @@ import TransparentBox from '../../components/TransparentBox';
 
 const Dashboard = () => {
 
-  const [isExtend, setIsExtend] = useState(false);
+  const [isExtend, setIsExtend] = useState(false); //Sidebar'ın büyütülüp küçültülmesi için gerekli olan kontrol state'i.
  
   return (
     <div>
@@ -16,8 +16,8 @@ const Dashboard = () => {
       <hr style={{border: "1px solid #000000"}}/>
       
       {isExtend && <TransparentBox />}
-      <div className={styles.container}>
-        <div className={styles.main}>
+      <div className={Styles.container}>
+        <div className={Styles.main}>
           <Store />
         </div>
         {!isExtend && <hr style={{border: "1px solid #000000"}}/>}

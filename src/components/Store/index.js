@@ -1,35 +1,24 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import SelectItem from '../../components/SelectItem'
 import Input from '../../components/Input'
 import styles from './styles.module.css'
 import PartItem from '../../components/PartItem';
 import ItemContext from '../../context/ItemContext';
 
-const items = ([
-  {itemNo:"10009436", brand:"Volkswagen", model:"Golf", itemName: "Balata", itemCost: "110,06"},
-  {itemNo:"10009437", brand:"Ford", model:"Focus", itemName: "Disk", itemCost: "350,05"},
-  {itemNo:"10002355", brand:"Fiat", model:"Doblo", itemName: "Silecek", itemCost: "80,08"},
-  {itemNo:"10003462", brand:"Opel", model:"Astra", itemName: "Dikiz Aynası", itemCost: "449,09"},
-  {itemNo:"10000230", brand:"Renault", model:"Megane 2", itemName: "El Freni", itemCost: "150,02"},
-  {itemNo:"10013423", brand:"Audi", model:"A4", itemName: "Hayalet Gösterge", itemCost: "2999,03"},
-  {itemNo:"10002134", brand:"Audi", model:"A3", itemName: "Torpido", itemCost: "123,00"},
-  {itemNo:"10091231", brand:"Renault", model:"Megane 4", itemName: "Stop Lambası", itemCost: "999,99"},
-  {itemNo:"10012312", brand:"Seat", model:"Leon", itemName: "Klima", itemCost: "1100,01"},
-  {itemNo:"11431153", brand:"Seat", model:"Leon", itemName: "Direksiyon", itemCost: "2200,01"},
-  {itemNo:"10012312", brand:"Renault", model:"Megane 4", itemName: "Ekran", itemCost: "5000,01"},
-  {itemNo:"10012312", brand:"Mercedes", model:"*", itemName: "Lastik", itemCost: "1100,01"},
-]);
-
 const Store = () => {
 
-  const { option, setOption } = useContext(ItemContext);
+  const { items, modelNames, option, setOption } = useContext(ItemContext);
   const optionName = option.option;
 
-  const filtered = items.filter( (item) => {
-    return Object.keys(item).some( (key => {
+  const filtered = items.filter((item) => {
+    return Object.keys(item).some((key => {
       return item[key].toString().toLowerCase().includes(optionName.toLowerCase())
     }))
   });
+
+  const cars = modelNames.map( (item) => item.name).filter((v, i, a) => a.indexOf(v) === i)
+  const models = modelNames.map( (item) => item.model)
+  //Select boxlara Araba ve Modeller ayrı olarak yollanıyor. Daha doğru bir logic için Seçilen arabanın modelleri listelenmeli. TODO: Tek bir component haline getirilip içeride kontrol sağlanabilir.
 
   return (
     <div>
@@ -37,13 +26,13 @@ const Store = () => {
         <div className={styles.search}>
           <SelectItem
             name={"Marka"}
-            id={"Marka"}
-            options={true}
+            type={true}
+            list={cars}
           />
           <SelectItem
             name={"Model"}
-            id={"Model"}
-            options={false}
+            type={false}
+            list={models}
           />
           <Input
             type={"text"}
@@ -55,9 +44,9 @@ const Store = () => {
         </div>
 
         <p className={styles.titles}>
-          <p className={styles.item}>Resim</p>
-          <p className={styles.item}>Parça No</p>
-          <p className={styles.item}>Parça Adı</p>
+          <p className={styles.item} style={{width: "18%"}}>Resim</p>
+          <p className={styles.item} style={{width: "27%"}}>Parça No</p>
+          <p className={styles.item} style={{width: "28%"}}>Parça Adı</p>
           <p className={styles.item}>Tutar</p>
         </p>
 
@@ -68,7 +57,6 @@ const Store = () => {
             </div>
           )
         })}
-
       </div>
     </div>
   )
