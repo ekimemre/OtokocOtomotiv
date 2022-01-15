@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 
-const userNameValidation = (usern) => {
+export const userNameValidation = (usern) => {
  
   const usernameRegex = /^[a-zA-Z0-9]+$/;
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -9,7 +9,7 @@ const userNameValidation = (usern) => {
   return result;
 }
 
-const passwordValidation = (pass) => {
+export const passwordValidation = (pass) => {
 
   const isWhitespace = /^(?=.*\s)/;
   if (isWhitespace.test(pass))
@@ -36,11 +36,10 @@ const passwordValidation = (pass) => {
 
 const ProtectedRoute = (props) => {
   
-  const { form } = props;
+  const { isAuth } = props;
   // mail: abc@gmail.com - password: StrongPass@3r55 __>> isAuth: true
-  // const isAuth = userNameValidation(form.userName) && passwordValidation(form.password)
-  const isAuth = true;
 
+  // Auth işlemi Login sayfasında gerçekleştiriliyor ama güvenlik açısından burada tekrardan isAuth kontrol edilmelidir.
   return (
     (isAuth) ? <Outlet /> : <Navigate to="/"/>
   );

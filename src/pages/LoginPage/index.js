@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { userNameValidation, passwordValidation } from '../ProtectedRoute';
 import styles from './styles.module.css'
 import ImageIcon from '../../svg/ImageIcon'
 import ErrorBox from '../../svg/ErrorBox'
@@ -12,19 +13,21 @@ import Button from '../../components/Button'
 const Login = ( props ) => {
 
   const navigate = useNavigate()
-  const { form, setForm } = props; //App.jsden gelen state değişkenleri.
+  const { form, setForm, isAuth, setIsAuth } = props; //App.jsden gelen state değişkenleri.
   const [isInputsValid, setInputsValid] = useState(true)
 
   const handleChange = (event) => { 
     setForm({...form, [event.target.name]: event.target.value}) //form içinde iki farklı değer saklandığı için hangi değerin değiştirilmesi gerektiğini target ile belirliyoruz.
+    const authentication = userNameValidation(form.userName) && passwordValidation(form.password);
+    setIsAuth(authentication)
   }
 
   const inputCheck = () => {
 
-    if(form.userName !== '' && form.password !== ''){
+    if(form.userName !== '' && form.password !== '' && isAuth ){ // Yönlendirme yapmadan inputların değerlerini kontrol edip, auth işlemini gerçekleştiriyoruz.
       navigate("/dashboard")      
     }
-    setInputsValid(false); //Sadece inputlar boş olduğunda çalışır. Giriş yapılamadığında görünmez. TODO
+    setInputsValid(false);
   }
 
   const closeErrorBox = () => {
