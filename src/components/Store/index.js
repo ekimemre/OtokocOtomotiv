@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import SelectItem from '../../components/SelectItem'
 import Input from '../../components/Input'
 import styles from './styles.module.css'
@@ -7,7 +7,7 @@ import ItemContext from '../../context/ItemContext';
 
 const Store = () => {
 
-  const { items, modelNames, option, setOption } = useContext(ItemContext);
+  const { items, option, setOption } = useContext(ItemContext);
   const optionName = option.option;
 
   const filtered = items.filter((item) => {
@@ -16,24 +16,13 @@ const Store = () => {
     }))
   });
 
-  const cars = modelNames.map( (item) => item.name).filter((v, i, a) => a.indexOf(v) === i)
-  const models = modelNames.map( (item) => item.model)
-  //Select boxlara Araba ve Modeller ayrı olarak yollanıyor. Daha doğru bir logic için Seçilen arabanın modelleri listelenmeli. TODO: Tek bir component haline getirilip içeride kontrol sağlanabilir.
-
   return (
     <div>
       <div className={styles.form}>
         <div className={styles.search}>
-          <SelectItem
-            name={"Marka"}
-            type={true}
-            list={cars}
-          />
-          <SelectItem
-            name={"Model"}
-            type={false}
-            list={models}
-          />
+          
+          <p className={styles.boxs}> <SelectItem/> </p>
+          
           <Input
             type={"text"}
             name='componentNo'

@@ -11,9 +11,8 @@ export const userNameValidation = (usern) => {
 
 export const passwordValidation = (pass) => {
 
-  const isWhitespace = /^(?=.*\s)/;
-  if (isWhitespace.test(pass))
-    return false; // Şifrede bosluk kullanılmamalı.
+  // "^(?=.*[a-z]) (?=.*[A-Z]) (?=.*\d) (?=.*[@$!%*?&]) [A-Za-z\d@$!%*?&]{8,}$"
+  //En az sekiz karakter, en az bir büyük harf, bir küçük harf ve bir özel karakter:
 
   const isContainsUppercase = /^(?=.*[A-Z])/;
   if (!isContainsUppercase.test(pass))
@@ -23,22 +22,21 @@ export const passwordValidation = (pass) => {
   if (!isContainsLowercase.test(pass))
     return false; // Şifre en az bir tane küçük harf içermeli.
 
-  const isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}[\]|\\:;"'<>,.?/_₹])/;
+
+  const isContainsSymbol = /^(?=.*[~`!@#-$%^&*()--+={}[\]|\\:;"'<>,.?/_])/;
   if (!isContainsSymbol.test(pass))
     return false; // Şifre en az bir tane özel karakter içermeli.
-
-  const isValidLength = /^.{8,30}$/;
+    
+  const isValidLength = /^.{8,}$/;
   if (!isValidLength.test(pass))
-    return false; // Şifre minumum 8 maksimum 30 karakter uzunluğunda olmalı.
+    return false; // Şifre minumum 8 karakter uzunluğunda olmalı
 
-  return true; // Eger bir hata almazsak paralo geçerlidir.
+  return true;
 }
 
 const ProtectedRoute = (props) => {
   
   const { isAuth } = props;
-  // mail: abc@gmail.com - password: StrongPass@3r55 __>> isAuth: true
-
   // Auth işlemi Login sayfasında gerçekleştiriliyor ama güvenlik açısından burada tekrardan isAuth kontrol edilmelidir.
   return (
     (isAuth) ? <Outlet /> : <Navigate to="/"/>

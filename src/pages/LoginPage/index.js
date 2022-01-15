@@ -49,7 +49,7 @@ const Login = ( props ) => {
           <Input
               label={"Email"}
               type={"text"}
-              name='userName'
+              name="userName"
               placeholder={"Email / Kullanıcı Adı"}
               value={form.userName}
               onChange={handleChange}
@@ -57,7 +57,7 @@ const Login = ( props ) => {
           <Input
               label={"Password"}
               type={"password"}
-              name='password'
+              name="password"
               placeholder={"Şifre"}
               value={form.password}
               onChange={handleChange}
