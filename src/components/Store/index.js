@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import ReactPaginate from 'react-paginate'
 import SelectItem from '../../components/SelectItem'
 import Input from '../../components/Input'
 import styles from './styles.module.css'
@@ -10,11 +11,29 @@ const Store = () => {
   const { items, option, setOption } = useContext(ItemContext);
   const optionName = option.option;
 
+  const [pageNumber, setPageNumber] = useState(0)
+  const itemPerPage = 6
+  const pagesVisited = pageNumber * itemPerPage
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected)
+  }
+
   const filtered = items.filter((item) => {
     return Object.keys(item).some((key => {
       return item[key].toString().toLowerCase().includes(optionName.toLowerCase())
     }))
   });
+
+  const pageCount = Math.ceil(filtered.length / itemPerPage)
+
+  const displayItems = filtered.slice(pagesVisited, pagesVisited + itemPerPage).map((item, i) => {
+    return ( 
+      <div key={i}>
+        <PartItem partId={item.itemNo} partName={item.itemName} partCost={item.itemCost}/>
+      </div>
+    )
+  })
 
   return (
     <div>
@@ -39,16 +58,33 @@ const Store = () => {
           <p className={styles.item}>Tutar</p>
         </p>
 
-        {filtered.map( (item, i) => {
-          return ( 
-            <div key={i}>
-              <PartItem partId={item.itemNo} partName={item.itemName} partCost={item.itemCost}/>
-            </div>
-          )
-        })}
+        {displayItems}
+        <div className={styles.pagination}>
+          <ReactPaginate 
+            previousLabel={"<"}
+            nextLabel={">"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={styles.paginationBttns}
+            previousLinkClassName={styles.previousBttn}
+            nextLinkClassName={styles.nextBttn}
+            disabledClassName={styles.paginationDisable}
+            activeClassName={styles.paginationActive}
+          />
+        </div>
       </div>
     </div>
   )
 }
 
 export default Store
+
+
+
+// {/* {filtered.map( (item, i) => {
+//   return ( 
+//     <div key={i}>
+//       <PartItem partId={item.itemNo} partName={item.itemName} partCost={item.itemCost}/>
+//     </div>
+//   )
+// })} */}
