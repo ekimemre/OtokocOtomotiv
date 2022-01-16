@@ -52,7 +52,7 @@ const Store = () => {
         </div>
 
         <p className={styles.titles}>
-          <p className={styles.item} style={{width: "18%"}}>Resim</p>
+          <p className={styles.item} style={{width: "19%"}}>Resim</p>
           <p className={styles.item} style={{width: "27%"}}>Parça No</p>
           <p className={styles.item} style={{width: "28%"}}>Parça Adı</p>
           <p className={styles.item}>Tutar</p>
